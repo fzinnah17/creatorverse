@@ -1,34 +1,43 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { React, useState, useEffect } from 'react'
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import AddCreator from './pages/AddCreator';
+import EditCreator from './pages/EditCreator';
+import ShowCreators from './pages/ShowCreators';
+import ViewCreator from './pages/ViewCreator';
+import { supabase } from './client.js';
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [creators, setCreators] = useState([]); // set the creators state to an empty array
+
+  useEffect(() => {
+    (async () => {
+        let { data, error } = await supabase.from('creators').select('*');
+        if (data) {
+            setCreators(data);
+        }
+    })();
+}, []);
+
+
+
+// let { data: creators, error } = await supabase
+// .from('creators')
+// .select('*')
+
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <BrowserRouter>
+      <div className="App">
+        <h1>React CRUD App with Hooks</h1>
+        <Routes>
+          <Route path="/" element={<ShowCreators creators = {creators} />} />
+          <Route path="/add-creator" element={<AddCreator />} />
+          <Route path="/edit-creator/:id" element={<EditCreator />} />
+          <Route path="/view-creator/:id" element={<ViewCreator />} />
+        </Routes>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    </BrowserRouter>
   )
 }
 
