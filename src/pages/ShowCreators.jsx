@@ -9,7 +9,7 @@ function ShowCreators({ creators }) {
             {creators.length === 0 ? (
                 <p>No content creators found in the database.</p>
             ) : (
-                creators.map(creator => <ContentCreator key={creator.id} creator={creator} />)
+                creators.map(creator => <ContentCreator key={creator.name} creator={creator} />)
             )}
         </div>
     );
