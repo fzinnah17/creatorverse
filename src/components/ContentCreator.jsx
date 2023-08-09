@@ -199,7 +199,7 @@
 
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { deleteCreator } from '../utils';
+import { deleteCreator } from '../pages/utils.js';
 
 import './ContentCreator.css';
 
@@ -221,7 +221,7 @@ function ContentCreator({ creators }) {
 
   const handleDelete = async () => {
     if (window.confirm("Are you sure you want to delete this content creator?")) {
-      await deleteCreator(creators[currentPage - 1].id);
+      await deleteCreator(creators[currentPage - 1].name);
       previousPage(); // move to the previous page after deletion
     }
   };

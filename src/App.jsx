@@ -25,9 +25,9 @@ function App() {
                 <h1>React CRUD App with Hooks</h1>
                 <Routes>
                     <Route path="/" element={<ShowCreators creators={creators} />} />
-                    <Route path="/add-creator" element={<AddCreator />} />
-                    <Route path="/edit-creator/:id" element={<EditCreator />} />
-                    <Route path="/view-creator/:id" element={<ViewCreator />} />
+                    <Route path="/add" element={<AddCreator />} />
+                    <Route path="/edit/:id" element={<EditCreator />} />
+                    <Route path="/view/:id" element={<ViewCreator />} />
                 </Routes>
             </div>
         </BrowserRouter>

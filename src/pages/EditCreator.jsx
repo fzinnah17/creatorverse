@@ -15,15 +15,16 @@ function EditCreator() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        // Fetch the creator data by ID
+        // // Fetch the content creator's data by the required ID 'name' and populate the form
         (async () => {
             const { data, error } = await supabase.from('creators').select('*').eq('id', id);
             if (data && data.length > 0) {
-                setFormData(data[0]);
+                setFormData(data[0]); // Update the form data with the retrieved data
             }
         })();
     }, [id]);
 
+    // Handle form submission to update content creator data
     const handleSubmit = async (e) => {
         e.preventDefault();
         const { data, error } = await supabase.from('creators').update(formData).eq('id', id);
@@ -34,6 +35,7 @@ function EditCreator() {
         }
     }
 
+    // Array of form fields with their details
     const formFields = [
         { key: 'name', label: 'Name', type: 'text', elementType: 'input' },
         { key: 'url', label: 'URL', type: 'url', elementType: 'input' },
