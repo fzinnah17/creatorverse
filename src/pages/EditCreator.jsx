@@ -14,6 +14,14 @@ function EditCreator() {
     // This hook returns a function that lets you navigate programmatically - React v6
     const navigate = useNavigate();
 
+
+// const { data, error } = await supabase
+// .from('creators')
+// .update({ other_column: 'otherValue' })
+// .eq('some_column', 'someValue')
+// .select()
+
+
     useEffect(() => {
         // // Fetch the content creator's data by the required ID 'name' and populate the form
         (async () => {
@@ -27,12 +35,18 @@ function EditCreator() {
     // Handle form submission to update content creator data
     const handleSubmit = async (e) => {
         e.preventDefault();
+        console.log(formData);
+
         const { data, error } = await supabase.from('creators').update(formData).eq('id', id);
-        if (data) {
+        if (! (error)) {
             navigate('/');  // Redirect to the main page after successful update
-        } else {
-            console.error("Error updating data: ", error);
         }
+
+        // if (data) {
+        //     navigate('/');  // Redirect to the main page after successful update
+        // } else {
+        //     console.error("Error updating data: ", error);
+        // }
     }
 
     // Array of form fields with their details

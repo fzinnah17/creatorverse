@@ -1,9 +1,23 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 // get the API call here and pass it to the ContenCreator file to render it and then pass it to all other files in the pages directory
 //fetch the data from the database then render it in the ContentCreator file
 import ContentCreator from "../components/ContentCreator";
+import { supabase } from '../client.js';
 
-function ShowCreators({ creators }) {
+
+function ShowCreators() {
+
+    const [creators, setCreators] = useState([]);
+    
+    useEffect(() => {
+        (async () => {
+            const { data, error } = await supabase.from('creators').select('*');
+            if (data) {
+                setCreators(data);
+            }
+        })();
+    }, []);
+
     return (
         <div>
             {/* Checking if the 'creators' array is empty 

@@ -10,21 +10,12 @@ import './App.css';
 function App() {
     const [creators, setCreators] = useState([]);
 
-    useEffect(() => {
-        (async () => {
-            const { data, error } = await supabase.from('creators').select('*');
-            if (data) {
-                setCreators(data);
-            }
-        })();
-    }, []);
-
     return (
         <BrowserRouter>
             <div className="App">
                 <h1>React CRUD App with Hooks</h1>
                 <Routes>
-                    <Route path="/" element={<ShowCreators creators={creators} />} />
+                    <Route path="/" element={<ShowCreators />} />
                     <Route path="/add" element={<AddCreator />} />
                     <Route path="/edit/:id" element={<EditCreator />} />
                     <Route path="/view/:id" element={<ViewCreator />} />
