@@ -221,8 +221,11 @@ function ContentCreator({ creators }) {
 
   const handleDelete = async () => {
     if (window.confirm("Are you sure you want to delete this content creator?")) {
-      await deleteCreator(creators[currentPage - 1].name);
-      previousPage(); // move to the previous page after deletion
+      const error = await deleteCreator(creators[currentPage - 1].id);
+      if (! (error)){
+        navigate("/");
+      }
+      // previousPage(); // move to the previous page after deletion
     }
   };
 
