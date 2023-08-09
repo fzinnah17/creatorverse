@@ -6,7 +6,6 @@ import { supabase } from '../client.js';
 
 
 function ShowCreators() {
-
     const [creators, setCreators] = useState([]);
     
     useEffect(() => {

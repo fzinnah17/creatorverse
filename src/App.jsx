@@ -8,8 +8,6 @@ import { supabase } from './client.js';
 import './App.css';
 
 function App() {
-    const [creators, setCreators] = useState([]);
-
     return (
         <BrowserRouter>
             <div className="App">
