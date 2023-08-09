@@ -198,10 +198,14 @@
 
 
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { deleteCreator } from '../utils';
+
 import './ContentCreator.css';
 
 function ContentCreator({ creators }) {
   const [currentPage, setCurrentPage] = useState(0);
+  const navigate = useNavigate();
 
   const nextPage = () => {
     if (currentPage <= creators.length) {
@@ -215,7 +219,13 @@ function ContentCreator({ creators }) {
     }
   };
 
-  
+  const handleDelete = async () => {
+    if (window.confirm("Are you sure you want to delete this content creator?")) {
+      await deleteCreator(creators[currentPage - 1].id);
+      previousPage(); // move to the previous page after deletion
+    }
+  };
+
 
   return (
     <div className="book">
@@ -240,6 +250,9 @@ function ContentCreator({ creators }) {
               {creators[currentPage - 1].url}
             </a>
             <p>{creators[currentPage - 1].description}</p>
+            <button onClick={() => navigate(`/view/${creators[currentPage - 1].id}`)}>View</button>
+            <button onClick={() => navigate(`/edit/${creators[currentPage - 1].id}`)}>Edit</button>
+            <button onClick={handleDelete}>Delete</button>
           </div>
         </div>
       )}
