@@ -23,10 +23,8 @@ function AddCreator() {
         // This makes it straightforward to send this data to Supabase, or any other back-end/database.
         // Here, we directly pass the formData to Supabase's insert method, which tries to add this data to the 'creators' table.
         const { data, error } = await supabase.from('creators').insert([formData]);
-        if (data) {
+        if (!(error)) {
             navigate('/');  // redirect to the main page after successful insert
-        } else {
-            console.error("Error inserting data: ", error);
         }
     }
 

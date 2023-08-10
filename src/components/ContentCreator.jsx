@@ -261,9 +261,10 @@ function ContentCreator({ creators }) {
       )}
   
       {currentPage === creators.length + 1 && (
-        <div className="page add-page">
-          <button>Add a new page</button>
-        </div>
+  <div className="page add-page">
+  <button onClick={() => navigate("/add")}>Add a new page</button>
+</div>
+
       )}
   
       {currentPage > 0 && (
@@ -277,6 +278,10 @@ function ContentCreator({ creators }) {
           <span className="arrow-btn">→</span>
         </div>
       )}
+      <div onClick={() => navigate("/add")} className="btn btn-add">
+    <span className="plus-btn">+</span>
+</div>
+
     </div>
   );
   
