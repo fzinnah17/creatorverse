@@ -68,6 +68,9 @@ function AddCreator() {
                     </label>
                 ))}
                 <button type="submit">Add Creator</button>
+                <div onClick={() => navigate("/")} className="btn btn-add">
+                    Return back to the first page
+                    </div>
             </form>
         </div>
     );
