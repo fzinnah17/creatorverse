@@ -222,7 +222,7 @@ function ContentCreator({ creators }) {
   const handleDelete = async () => {
     if (window.confirm("Are you sure you want to delete this content creator?")) {
       const error = await deleteCreator(creators[currentPage - 1].id);
-      if (! (error)){
+      if (!(error)) {
         navigate("/");
       }
       // previousPage(); // move to the previous page after deletion
@@ -239,7 +239,7 @@ function ContentCreator({ creators }) {
           </div>
         </div>
       )}
-  
+
       {currentPage > 0 && currentPage <= creators.length && (
         <div className="page">
           <div className="default-position left-img left-cover">
@@ -259,32 +259,35 @@ function ContentCreator({ creators }) {
           </div>
         </div>
       )}
-  
+
       {currentPage === creators.length + 1 && (
-  <div className="page add-page">
-  <button onClick={() => navigate("/add")}>Add a new page</button>
-</div>
+        <div className="page add-page">
+          <button onClick={() => navigate("/add")}>Add a new page</button>
+          <button onClick={() => navigate("/")}>
+            Return back to the first page
+          </button>
+        </div>
 
       )}
-  
+
       {currentPage > 0 && (
         <div onClick={previousPage} className="btn btn-prev">
           <span className="arrow-btn">←</span>
         </div>
       )}
-  
+
       {currentPage <= creators.length && (
         <div onClick={nextPage} className="btn btn-next">
           <span className="arrow-btn">→</span>
         </div>
       )}
       <div onClick={() => navigate("/add")} className="btn btn-add">
-    <span className="plus-btn">+</span>
-</div>
+        <span className="plus-btn">+</span>
+      </div>
 
     </div>
   );
-  
+
 }
 
 export default ContentCreator;

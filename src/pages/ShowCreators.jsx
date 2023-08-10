@@ -7,7 +7,7 @@ import { supabase } from '../client.js';
 
 function ShowCreators() {
     const [creators, setCreators] = useState([]);
-    
+
     useEffect(() => {
         (async () => {
             const { data, error } = await supabase.from('creators').select('*');

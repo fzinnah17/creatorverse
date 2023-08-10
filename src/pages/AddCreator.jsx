@@ -1,20 +1,21 @@
 import React, { useState } from "react";
 import { supabase } from '../client.js';
 import { useNavigate } from 'react-router-dom';
+import "./AddCreator.css"
 
 function AddCreator() {
-// formData and setFormData: When creating forms in React, it's common to use a piece of state to keep track of the current form's input values. 
-//                           This approach aligns well with the concept of controlled components in React, which is where the React component that 
-//                           renders a form also controls what happens in that form on subsequent user input.
+    // formData and setFormData: When creating forms in React, it's common to use a piece of state to keep track of the current form's input values. 
+    //                           This approach aligns well with the concept of controlled components in React, which is where the React component that 
+    //                           renders a form also controls what happens in that form on subsequent user input.
 
-//  We initialize the state to represent the inputs of the form. This formData state will hold the current values of the form fields, allowing us to access them when the form is submitted. -> The current state & A function that updates the state.
+    //  We initialize the state to represent the inputs of the form. This formData state will hold the current values of the form fields, allowing us to access them when the form is submitted. -> The current state & A function that updates the state.
     const [formData, setFormData] = useState({
         name: '',
         url: '',
         description: '',
         imageURL: ''
     });
-// The useNavigate hook returns a function that lets you navigate programmatically - React v6
+    // The useNavigate hook returns a function that lets you navigate programmatically - React v6
     const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
@@ -38,13 +39,11 @@ function AddCreator() {
     ];
 
     return (
-        <div>
-            <h1>Add Creators</h1>
-            <form onSubmit={handleSubmit}>
+        <div className="add-container">
+            <form onSubmit={handleSubmit} className="add-form">
                 {formFields.map(field => (
-                /* The map function then renders each form input based on the elementType. If it's an 'input', it renders an input field; if it's a 'textarea', it renders a textarea. */
-                    <label key={field.key}>
-                        {field.label}:
+                    /* The map function then renders each form input based on the elementType. If it's an 'input', it renders an input field; if it's a 'textarea', it renders a textarea. */
+                    <label key={field.key} className="add-label">
                         {field.elementType === 'input' ? (
                             /* Controlled Component: When we set the value prop of the form input to a state variable'key: name,url,description, imageURL', 
                             and also update that state when the input changes, we are creating a controlled component.
@@ -53,24 +52,32 @@ function AddCreator() {
                             https://react.dev/reference/react-dom/components/input*/
                             <input
                                 type={field.type}
+                                placeholder={field.label}
                                 value={formData[field.key]} // ...force the input's value to match the state variable...
                                 onChange={e => setFormData({ ...formData, [field.key]: e.target.value })} //... and update the state variable on any edits!
                                 required
+                                className="add-input"
                             />
                         ) : (
                             // https://react.dev/reference/react-dom/components/textarea
                             <textarea
+                                placeholder={field.label}
                                 value={formData[field.key]} // ...force the input's value to match the state variable...
                                 onChange={e => setFormData({ ...formData, [field.key]: e.target.value })} // ... and update the state variable on any edits!
                                 required
+                                className="add-textarea"
                             ></textarea>
                         )}
                     </label>
                 ))}
-                <button type="submit">Add Creator</button>
-                <div onClick={() => navigate("/")} className="btn btn-add">
+                <div id="button"> {/* Introduced this div for the ripple effect */}
+                    <button type="submit" className="add-button ripple">Add Creator</button>
+                    <span className="rip1"></span> {/* New Ripple Effect */}
+                    <span className="rip2"></span> {/* New Ripple Effect */}
+                </div>
+                <div onClick={() => navigate("/")} className="add-button return ripple">
                     Return back to the first page
-                    </div>
+                </div>
             </form>
         </div>
     );

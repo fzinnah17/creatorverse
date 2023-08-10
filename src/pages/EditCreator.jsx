@@ -15,11 +15,11 @@ function EditCreator() {
     const navigate = useNavigate();
 
 
-// const { data, error } = await supabase
-// .from('creators')
-// .update({ other_column: 'otherValue' })
-// .eq('some_column', 'someValue')
-// .select()
+    // const { data, error } = await supabase
+    // .from('creators')
+    // .update({ other_column: 'otherValue' })
+    // .eq('some_column', 'someValue')
+    // .select()
 
 
     useEffect(() => {
@@ -38,7 +38,7 @@ function EditCreator() {
         console.log(formData);
 
         const { data, error } = await supabase.from('creators').update(formData).eq('id', id);
-        if (! (error)) {
+        if (!(error)) {
             navigate('/');  // Redirect to the main page after successful update
         }
 

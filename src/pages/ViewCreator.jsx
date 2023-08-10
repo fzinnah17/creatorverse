@@ -8,12 +8,12 @@ function ViewCreator() {
     const navigate = useNavigate();
     const [creator, setCreator] = useState({}); // Initialize state to store the creator's details
     // function to handle the delete button click
-    const handleDelete = async () => { 
+    const handleDelete = async () => {
         if (window.confirm("Are you sure you want to delete this content creator?")) {
-          await deleteCreator(id); // Call the deleteCreator function from the utility module
-          navigate("/"); // Redirect to ContentCreator after deletion
+            await deleteCreator(id); // Call the deleteCreator function from the utility module
+            navigate("/"); // Redirect to ContentCreator after deletion
         }
-      };
+    };
 
     // Fetch the creator's details from the database using an effect hook
     useEffect(() => {
