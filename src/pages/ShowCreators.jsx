@@ -10,7 +10,7 @@ function ShowCreators() {
 
     useEffect(() => {
         (async () => {
-            const { data, error } = await supabase.from('creators').select('*');
+            const { data, error } = await supabase.from('creators').select('*').order('id', { ascending: true });
             if (data) {
                 setCreators(data);
             }
