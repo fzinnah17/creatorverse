@@ -1,247 +1,220 @@
-/* AddCreator.css
-.add-container {
-    background: var(--primary);
-    display: grid;
-    height: 100vh;
-    place-items: center;
-    font-family: "Nunito Sans", sans-serif;
-  }
-  
-  .add-form {
-    display: flex;
-    flex-direction: column;
-    padding-block: 24px;
-    border-radius: 20px;
-    background: linear-gradient(145deg, #f1f4fa, #cbcdd3);
-    box-shadow: var(--primary-box-shadow);
-    height: 360px;
-    width: 300px;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .add-label {
-    color: #5a5a5a;
-    font-weight: 800;
-    font-size: 1.1rem;
-    line-height: 1;
-    letter-spacing: 0.8px;
-  }
-  
-  .add-input,
-  .add-textarea {
-    border: none;
-    height: 32px;
-    border-radius: 10px;
-    background: linear-gradient(145deg, #f1f4fa, #cbcdd3);
-    outline: none;
-    font-family: "Nunito Sans", sans-serif;
-  }
-  
-  .add-input[type="text"],
-  .add-input[type="url"],
-  .add-textarea {
-    box-shadow: var(--secondary-box-shadow);
-    padding-inline: 20px;
-    height: 49px;
-    width: 60%;
-  }
-  
-  .add-button {
-    box-shadow: var(--primary-box-shadow);
-    cursor: pointer;
-    font-weight: 800;
-    letter-spacing: 0.8px;
-    height: 50px;
-    font-size: 1rem;
-    color: #5a5a5a;
-    position: relative;
-    z-index: 100;
-    width: 100%;
-  }
-  
-  .add-button.return {
-    cursor: pointer;
-    font-family: "Nunito Sans", sans-serif;
-    font-size: 0.8rem;
-    color: gray;
-    text-decoration: underline;
-  }
+.neon-red {
+  --neon: #FF5161;
+  --neon-glow: #D30302;
+}
 
-.ripple {
-    overflow: hidden;
-    position: relative;
-    z-index: 1;
-    cursor: pointer;
-    transition: transform 0.4s ease-out;
+.neon-pink {
+  --neon: #FF53cd;
+  --neon-glow: #e10361;
+}
+
+.neon-purple {
+  --neon: #9461fd;
+  --neon-glow: #4003e6;
+}
+
+.neon-blue {
+  --neon: #2dd9fe;
+  --neon-glow: #00a3d5;
+}
+
+.neon-green {
+  --neon: #00fe9b;
+  --neon-glow: #02c435;
+}
+
+.neon-yellow {
+  --neon: #ffdb4e;
+  --neon-glow: #b48505;
+}
+
+.neon-white {
+  --neon: #fefefe;
+  --neon-glow: #ffffff;
+}
+
+@supports (background: color(display-p3 1 1 1)) {
+  @media (dynamic-range: high) {
+    .neon-red {
+      --neon-glow: color(display-p3 1 0 0);
+    }
+
+    .neon-pink {
+      --neon-glow: color(display-p3 1 0 1);
+    }
+
+    .neon-purple {
+      --neon-glow: color(display-p3 0 0 1);
+    }
+
+    .neon-blue {
+      --neon-glow: color(display-p3 0 1 1);
+    }
+
+    .neon-green {
+      --neon-glow: color(display-p3 0 1 0);
+    }
+
+    .neon-yellow {
+      --neon-glow: color(display-p3 1 1 0);
+    }
+
+    .neon-white {
+      --neon-glow: color(display-p3 1 1 1);
+    }
   }
-  
-  .ripple:before {
-    content: "";
-    position: absolute;
-    background: rgba(255, 255, 255, 0.8);
-    border-radius: 50%;
-    transform: scale(0);
-    transition: transform 0.4s ease-in;
-    pointer-events: none;
-  }
-  
-  .ripple:active:before {
-    transform: scale(4);
-  } */
+}
 
-
-
-  /* Add this CSS in your existing CSS file */
 
 .add-container {
-    background: var(--primary);
-    display: grid;
-    height: 80vh;
-    place-items: center;
+  display: grid;
+  height: 80vh;
+  place-items: center;
 }
 
 .add-form {
-    display: flex;
-    flex-direction: column;
-    padding-top: 24px;
-    border-radius: 20px;
-    background: linear-gradient(145deg, #f1f4fa, #cbcdd3);
-    box-shadow: var(--primary-box-shadow);
-    height: 560px;
-    width: 560px;
-    gap: 20px;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  padding-top: 24px;
+  border-radius: 20px;
+  background: linear-gradient(180deg, var(--neon), var(--neon-glow));
+  box-shadow: var(--primary-box-shadow);
+  height: 560px;
+  width: 560px;
+  gap: 20px;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .add-label {
-    color: #5a5a5a;
-    font-weight: 800;
-    font-size: 1.1rem;
-    line-height: 1;
-    letter-spacing: 0.8px;
+  padding-top: 10px;
+  font-weight: 500;
+  font-size: 1.1rem;
+  line-height: 1;
+  letter-spacing: 0.8px;
 }
 
 .add-input,
 .add-textarea {
-    resize: none;
-    border: none;
-    height: 32px;
-    border-radius: 10px;
-    background: linear-gradient(145deg, #f1f4fa, #cbcdd3);
-    outline: none;
-    font-family: "Nunito Sans", sans-serif;
+  resize: none;
+  border: none;
+  height: 20px;
+  border-radius: 20px;
+  background: linear-gradient(145deg, var(--neon), var(--neon-glow));
+  color: black;
+  outline: none;
+  font-family: "Nunito Sans", sans-serif;
 }
 
 .add-input[type="text"],
 .add-input[type="url"],
 .add-textarea {
-    box-shadow: var(--secondary-box-shadow);
-    padding: 20px;
-    width: 302px;
-    height: 29px;
+  box-shadow: var(--secondary-box-shadow);
+  padding: 16px;
+  width: 302px;
+  height: 29px;
 }
 
 .add-input::placeholder,
 .add-textarea::placeholder {
-    color: #5a5a5a;
-    font-size: 1.1rem;
-    line-height: 1;
-    letter-spacing: 0.8px;
-    opacity: 0.4; /* Making it slightly transparent */
+  color: black;
+  opacity: 0.3;
+  font-size: 1.1rem;
+  line-height: 1;
+  letter-spacing: 0.8px;
 }
 
 
 .add-button {
-    box-shadow: var(--primary-box-shadow);
-    cursor: pointer;
-    border-radius: revert;
-    letter-spacing: 0.8px;
-    height: 45px;
-    font-size: 1rem;
-    color: #5a5a5a;
-    position: relative;
-    z-index: 100;
-    width: 45%;
-    text-align: center;
+  box-shadow: var(--primary-box-shadow);
+  cursor: pointer;
+  border-radius: 16px;
+  letter-spacing: 0.8px;
+  height: 45px;
+  font-size: 1rem;
+  color: #5a5a5a;
+  position: relative;
+  z-index: 100;
+  width: 45%;
+  text-align: center;
 }
 
 .add-button.return {
-    cursor: pointer;
-    font-family: "Nunito Sans", sans-serif;
-    font-size: 0.8rem;
-    color: gray;
-    text-decoration: underline;
+  cursor: pointer;
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 0.8rem;
+  color: white;
+  text-decoration: underline;
 }
 
 .ripple {
-    overflow: hidden;
-    position: relative;
-    z-index: 1;
-    cursor: pointer;
-    transition: transform 0.4s ease-out;
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+  cursor: pointer;
+  transition: transform 0.4s ease-out;
 }
 
 .ripple:before {
-    content: "";
-    position: absolute;
-    background: rgba(255, 255, 255, 0.4);
-    border-radius: 50%;
-    transform: scale(0);
-    transition: transform 0.4s ease-in;
-    pointer-events: none;
+  content: "";
+  position: absolute;
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 50%;
+  transform: scale(0);
+  transition: transform 0.4s ease-in;
+  pointer-events: none;
 }
 
 .ripple:active:before {
-    transform: scale(2);
+  transform: scale(2);
 }
 
 
 .rip1,
 .rip2 {
-    filter: blur(2px);
-    width: 100%;
-    position: absolute;
-    height: 50px;
-    left: 0;
-    bottom: 0;
+  filter: blur(2px);
+  width: 100%;
+  position: absolute;
+  height: 50px;
+  left: 0;
+  bottom: 0;
 }
 
 .rip1 {
-    box-shadow: 0.4rem 0.4rem 0.8rem #c8d0e7, -0.4rem -0.4rem 0.8rem #fff;
-    background: linear-gradient(to bottom right, #fff 0%, #c8d0e7 100%);
-    animation: waves 2s linear infinite;
+  box-shadow: 0.4rem 0.4rem 0.8rem #c8d0e7, -0.4rem -0.4rem 0.8rem #fff;
+  background: linear-gradient(to bottom right, #fff 0%, #c8d0e7 100%);
+  animation: waves 2s linear infinite;
 }
 
 .rip2 {
-    box-shadow: 0.4rem 0.4rem 0.8rem #c8d0e7, -0.4rem -0.4rem 0.8rem #fff;
-    animation: waves 2s linear 1s infinite;
+  box-shadow: 0.4rem 0.4rem 0.8rem #c8d0e7, -0.4rem -0.4rem 0.8rem #fff;
+  animation: waves 2s linear 1s infinite;
 }
 
 @keyframes waves {
-    0% {
-        transform: scale(0.7); /* Adjusted initial scale */
-        opacity: 0.9; /* Adjusted opacity */
-        border-radius: 10px; /* Adjusted border radius */
-    }
+  0% {
+      transform: scale(0.7); /* Adjusted initial scale */
+      opacity: 0.9; /* Adjusted opacity */
+      border-radius: 10px; /* Adjusted border radius */
+  }
 
-    50% {
-        opacity: 0.7; /* Adjusted opacity */
-        border-radius: 15px; /* Adjusted border radius */
-    }
+  50% {
+      opacity: 0.7; /* Adjusted opacity */
+      border-radius: 15px; /* Adjusted border radius */
+  }
 
-    100% {
-        transform: scale(1.4); /* Adjusted larger scale */
-        opacity: 0; /* Faded out */
-        border-radius: 26px; /* Adjusted larger border radius */
-    }
+  100% {
+      transform: scale(1.4); /* Adjusted larger scale */
+      opacity: 0; /* Faded out */
+      border-radius: 26px; /* Adjusted larger border radius */
+  }
 }
 
 #button {
-    width: 50%; /* Adjusted this to fit your layout */
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  width: 50%;
+  /* Adjusted this to fit your layout */
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

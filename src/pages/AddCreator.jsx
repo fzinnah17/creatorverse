@@ -39,7 +39,7 @@ function AddCreator() {
     ];
 
     return (
-        <div className="add-container">
+        <div className="add-container neon-purple">
             <form onSubmit={handleSubmit} className="add-form">
                 {formFields.map(field => (
                     /* The map function then renders each form input based on the elementType. If it's an 'input', it renders an input field; if it's a 'textarea', it renders a textarea. */
@@ -56,26 +56,26 @@ function AddCreator() {
                                 value={formData[field.key]} // ...force the input's value to match the state variable...
                                 onChange={e => setFormData({ ...formData, [field.key]: e.target.value })} //... and update the state variable on any edits!
                                 required
-                                className="add-input"
+                                className="add-input neon-white"
                             />
                         ) : (
                             // https://react.dev/reference/react-dom/components/textarea
                             <textarea
                                 placeholder={field.label}
-                                value={formData[field.key]} // ...force the input's value to match the state variable...
+                                value={formData[field.key]} // ...react.dev/reference/react-dom/components/textarea
                                 onChange={e => setFormData({ ...formData, [field.key]: e.target.value })} // ... and update the state variable on any edits!
                                 required
-                                className="add-textarea"
+                                className="add-textarea neon-white"
                             ></textarea>
                         )}
                     </label>
                 ))}
                 <div id="button"> {/* Introduced this div for the ripple effect */}
                     <button type="submit" className="add-button ripple">Add Creator</button>
-                    <span className="rip1"></span> {/* New Ripple Effect */}
-                    <span className="rip2"></span> {/* New Ripple Effect */}
+                    <span className="rip1 "></span> {/* New Ripple Effect */}
+                    <span className="rip2 "></span> {/* New Ripple Effect */}
                 </div>
-                <div onClick={() => navigate("/")} className="add-button return ripple">
+                <div onClick={() => navigate("/")} className="add-button return ripple neon-green">
                     Return back to the first page
                 </div>
             </form>
