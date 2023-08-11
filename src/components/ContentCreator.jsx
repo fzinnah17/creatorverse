@@ -197,98 +197,144 @@
 
 
 
-import React, { useState } from 'react';
+// import React, { useState } from 'react';
+// import { useNavigate } from 'react-router-dom';
+// import { deleteCreator } from '../pages/utils.js';
+
+// import './ContentCreator.css';
+
+// function ContentCreator({ creators }) {
+//   const [currentPage, setCurrentPage] = useState(0);
+//   const navigate = useNavigate();
+
+//   const nextPage = () => {
+//     if (currentPage <= creators.length) {
+//       setCurrentPage(prevPage => prevPage + 1);
+//     }
+//   };
+
+//   const previousPage = () => {
+//     if (currentPage > 0) {
+//       setCurrentPage(prevPage => prevPage - 1);
+//     }
+//   };
+
+//   const handleDelete = async () => {
+//     if (window.confirm("Are you sure you want to delete this content creator?")) {
+//       const error = await deleteCreator(creators[currentPage - 1].id);
+//       if (!(error)) {
+//         navigate("/");
+//       }
+//       // previousPage(); // move to the previous page after deletion
+//     }
+//   };
+
+
+//   return (
+//     <div className="book">
+//       {currentPage === 0 && (
+//         <div className="page cover-page">
+//           <div className="default-position left-img left-cover" data-date={new Date().toLocaleDateString()}>
+//             <span className="cover-text">Name: John, Course: Web Dev, ID: 12345, Date: {new Date().toLocaleDateString()}</span>
+//           </div>
+//         </div>
+//       )}
+
+//       {currentPage > 0 && currentPage <= creators.length && (
+//         <div className="page">
+//           <div className="default-position left-img left-cover">
+//             <div className="image-container">
+//               <img className="card-image" src={creators[currentPage - 1].imageURL} alt={creators[currentPage - 1].name} />
+//             </div>
+//           </div>
+//           <div className="default-position right-img right-cover card-content">
+//             <h2>{creators[currentPage - 1].name}</h2>
+//             <a href={creators[currentPage - 1].url} target="_blank" rel="noopener noreferrer">
+//               {creators[currentPage - 1].url}
+//             </a>
+//             <p>{creators[currentPage - 1].description}</p>
+//             <button onClick={() => navigate(`/view/${creators[currentPage - 1].id}`)}>View</button>
+//             <button onClick={() => navigate(`/edit/${creators[currentPage - 1].id}`)}>Edit</button>
+//             <button onClick={handleDelete}>Delete</button>
+//           </div>
+//         </div>
+//       )}
+
+//       {currentPage === creators.length + 1 && (
+//         <div className="page add-page">
+//           <button onClick={() => navigate("/add")}>Add a new page</button>
+//           <button onClick={() => navigate("/")}>
+//             Return back to the first page
+//           </button>
+//         </div>
+
+//       )}
+
+//       {currentPage > 0 && (
+//         <div onClick={previousPage} className="btn btn-prev">
+//           <span className="arrow-btn">←</span>
+//         </div>
+//       )}
+
+//       {currentPage <= creators.length && (
+//         <div onClick={nextPage} className="btn btn-next">
+//           <span className="arrow-btn">→</span>
+//         </div>
+//       )}
+//       <div onClick={() => navigate("/add")} className="btn btn-add">
+//         <span className="plus-btn">+</span>
+//       </div>
+
+//     </div>
+//   );
+
+// }
+
+// export default ContentCreator;
+
+
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { deleteCreator } from '../pages/utils.js';
 
 import './ContentCreator.css';
 
 function ContentCreator({ creators }) {
-  const [currentPage, setCurrentPage] = useState(0);
   const navigate = useNavigate();
 
-  const nextPage = () => {
-    if (currentPage <= creators.length) {
-      setCurrentPage(prevPage => prevPage + 1);
-    }
-  };
-
-  const previousPage = () => {
-    if (currentPage > 0) {
-      setCurrentPage(prevPage => prevPage - 1);
-    }
-  };
-
-  const handleDelete = async () => {
+  const handleDelete = async (id) => {
     if (window.confirm("Are you sure you want to delete this content creator?")) {
-      const error = await deleteCreator(creators[currentPage - 1].id);
-      if (!(error)) {
+      const error = await deleteCreator(id);
+      if (!error) {
         navigate("/");
       }
-      // previousPage(); // move to the previous page after deletion
     }
   };
 
-
   return (
-    <div className="book">
-      {currentPage === 0 && (
-        <div className="page cover-page">
-          <div className="default-position left-img left-cover" data-date={new Date().toLocaleDateString()}>
-            <span className="cover-text">Name: John, Course: Web Dev, ID: 12345, Date: {new Date().toLocaleDateString()}</span>
-          </div>
-        </div>
-      )}
-
-      {currentPage > 0 && currentPage <= creators.length && (
-        <div className="page">
-          <div className="default-position left-img left-cover">
-            <div className="image-container">
-              <img className="card-image" src={creators[currentPage - 1].imageURL} alt={creators[currentPage - 1].name} />
-            </div>
-          </div>
-          <div className="default-position right-img right-cover card-content">
-            <h2>{creators[currentPage - 1].name}</h2>
-            <a href={creators[currentPage - 1].url} target="_blank" rel="noopener noreferrer">
-              {creators[currentPage - 1].url}
+    <div className="content-container">
+      {creators.map((creator, index) => (
+        <div key={index} className="content-card">
+          <img className="contentcard-image" src={creator.imageURL} alt={creator.name} />
+          <div className={`content-cover content-cover${(index % 3) + 1}`}>
+            <h1 style={{ margin: "0.25em" }}>{creator.name}</h1>
+            <h2 style={{ margin: "0.1em", marginBottom: "1.5em" }}>{creator.description}</h2>
+            <a href={creator.url} target="_blank" rel="noopener noreferrer">
+              {creator.url}
             </a>
-            <p>{creators[currentPage - 1].description}</p>
-            <button onClick={() => navigate(`/view/${creators[currentPage - 1].id}`)}>View</button>
-            <button onClick={() => navigate(`/edit/${creators[currentPage - 1].id}`)}>Edit</button>
-            <button onClick={handleDelete}>Delete</button>
+            <button onClick={() => navigate(`/view/${creator.id}`)}>View</button>
+            <button onClick={() => navigate(`/edit/${creator.id}`)}>Edit</button>
+            <button onClick={() => handleDelete(creator.id)}>Delete</button>
           </div>
         </div>
-      )}
-
-      {currentPage === creators.length + 1 && (
-        <div className="page add-page">
-          <button onClick={() => navigate("/add")}>Add a new page</button>
-          <button onClick={() => navigate("/")}>
-            Return back to the first page
-          </button>
-        </div>
-
-      )}
-
-      {currentPage > 0 && (
-        <div onClick={previousPage} className="btn btn-prev">
-          <span className="arrow-btn">←</span>
-        </div>
-      )}
-
-      {currentPage <= creators.length && (
-        <div onClick={nextPage} className="btn btn-next">
-          <span className="arrow-btn">→</span>
-        </div>
-      )}
-      <div onClick={() => navigate("/add")} className="btn btn-add">
-        <span className="plus-btn">+</span>
+      ))}
+      <div onClick={() => navigate("/add")} className="content-btn content-btn-add">
+        <span className="plus-btn">+ Add a Content Creator</span>
       </div>
-
     </div>
   );
-
 }
 
 export default ContentCreator;
+
 

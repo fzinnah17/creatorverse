@@ -206,13 +206,12 @@
   100% {
       transform: scale(1.4); /* Adjusted larger scale */
       opacity: 0; /* Faded out */
-      border-radius: 26px; /* Adjusted larger border radius */
+      border-radius: 20px; /* Adjusted larger border radius */
   }
 }
 
 #button {
   width: 50%;
-  /* Adjusted this to fit your layout */
   position: relative;
   display: flex;
   justify-content: center;

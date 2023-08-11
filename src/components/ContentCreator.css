@@ -267,7 +267,7 @@
 
 
 /* General styles */
-.book {
+/* .book {
     margin: auto;
     position: relative;
     height: 400px;
@@ -289,7 +289,6 @@
     border-radius: 30px;
 }
 
-/* Cover page details */
 .left-cover::before {
     content: 'Name: John, Course: Web Dev, ID: 12345, Date: ' attr(data-date);
     position: absolute;
@@ -351,7 +350,6 @@
     text-decoration: none;
 }
 
-/* Buttons */
 .btn {
     position: absolute;
     top: 50%;
@@ -381,7 +379,6 @@
     font-size: 24px;
 }
 
-/* Image layers */
 .img-layer-right {
     right: 0;
     background: linear-gradient(
@@ -400,7 +397,6 @@
     );
 }
 
-/* Page transformations */
 .default-position {
     transform: rotateY(0deg);
 }
@@ -415,4 +411,171 @@
     perspective: 1000px;
     transform-origin: right center;
     transition: transform 0.5s;
+} */
+
+/* Basic Styling */
+.content-container {
+  font-family: "Tinos", sans-serif;
+  margin-top: 2em;
+  margin-bottom: 2em;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
 }
+
+.content-card {
+  width: 25%;
+  max-width: 350px;
+  height: 500px;
+  background-color: transparent;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.25);
+}
+
+.contentcard-image {
+  width: 100%;
+  max-width: 350px;
+  height: 500px;
+  object-fit: cover;
+  backface-visibility: hidden;
+}
+
+.content-cover {
+  z-index: 1;
+  width: 100%;
+  max-width: 350px;
+  height: 500px;
+  background-color: white;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.75s ease-in-out;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 1em;
+  box-sizing: border-box;
+  transform: translateX(100%);
+}
+
+/* Card Covers */
+.content-cover1 {
+  transform: translateY(-100%);
+}
+
+/* Slide from right */
+.content-cover2 {
+  transform: translateX(-100%);
+}
+
+/* Flip 180 */
+.content-cover3 {
+  width: 100%;
+  max-width: 350px;
+  height: 500px;
+  background-color: white;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.75s ease-in-out;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 1em;
+  box-sizing: border-box;
+  transform: translateX(100%) scaleX(-1);
+}
+
+.content-card:hover .content-cover1,
+.content-card:hover .content-cover2 {
+  transform: translateX(0);
+  z-index: 2;
+}
+
+.content-card:hover .content-cover3 {
+  transform: rotateY(0deg);
+  z-index: 2;
+}
+
+/* Hover Effect */
+.content-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  z-index: 1;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.content-card:hover::before {
+  opacity: 1;
+}
+
+/* Button Styling */
+.content-cover button {
+  z-index: 2;
+  all: unset;
+  cursor: pointer;
+  padding: 0.5em;
+  outline: 1px solid #d4aa00;
+  color: #d4aa00;
+  margin-top: 0.5em;
+}
+
+.content-cover button:hover {
+  all: unset;
+  cursor: pointer;
+  padding: 0.5em;
+  color: white;
+  background-color: #d4aa00;
+}
+
+.content-cover a {
+  color: #d4aa00;
+  text-decoration: none;
+  margin-top: 0.5em;
+}
+
+.content-cover a:hover {
+  text-decoration: underline;
+}
+
+
+/* Add Button */
+.content-btn-add {
+  width: 100%;
+  text-align: center;
+  position: relative;
+  bottom: 20px;
+  right: 20px;
+  cursor: pointer;
+  z-index: 1;
+  transition: transform 0.3s ease-in-out;
+}
+
+.content-btn-add:hover {
+  transform: scale(1.1);
+}
+
+.plus-btn {
+  font-size: 2em;
+  color: #d4aa00;
+}
+
+/* Additional Styling */
+h1,
+h2 {
+  margin: 0;
+}
+
