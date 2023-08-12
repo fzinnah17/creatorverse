@@ -4,13 +4,24 @@ import AddCreator from './pages/AddCreator';
 import EditCreator from './pages/EditCreator';
 import ShowCreators from './pages/ShowCreators';
 import ViewCreator from './pages/ViewCreator';
-import { supabase } from './client.js';
+import { Navbar } from './components/Navbar.jsx';
 import './App.css';
 
+export const ThemeContext = React.createContext();
+
 function App() {
+    const [theme, setTheme] = useState(localStorage.getItem('theme') || 'light');
+
+    useEffect(() => {
+        localStorage.setItem('theme', theme);
+        document.body.setAttribute('data-theme', theme);
+    }, [theme]);
+
     return (
         <BrowserRouter>
+        <ThemeContext.Provider value={{ theme, setTheme }}>
             <div className="App">
+            <Navbar />
                 <Routes>
                     <Route path="/" element={<ShowCreators />} />
                     <Route path="/add" element={<AddCreator />} />
@@ -18,6 +29,7 @@ function App() {
                     <Route path="/view/:id" element={<ViewCreator />} />
                 </Routes>
             </div>
+            </ThemeContext.Provider>
         </BrowserRouter>
     );
 }
