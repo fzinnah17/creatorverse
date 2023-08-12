@@ -136,13 +136,14 @@
 }
 
 
-/* Add Button */
 .content-btn-add {
   width: 100%;
   text-align: center;
-  position: relative;
-  bottom: 20px;
-  right: 20px;
+  position: absolute;
+  position: fixed;
+  top: 50%;
+  right: 670px;
+  transform: translateY(-50%);
   cursor: pointer;
   z-index: 1;
   transition: transform 0.3s ease-in-out;
@@ -151,6 +152,7 @@
 .content-btn-add:hover {
   transform: scale(1.1);
 }
+
 
 .plus-btn {
   font-size: 2em;
@@ -163,3 +165,14 @@ h2 {
   margin: 0;
 }
 
+.add-text {
+  display: none;
+}
+
+.content-btn-add:hover .plus-btn {
+  opacity: 0;  /* Hide it with opacity so the layout doesn't shift. */
+}
+
+.content-btn-add:hover .add-text {
+  display: inline;
+}

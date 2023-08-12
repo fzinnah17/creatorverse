@@ -4,15 +4,12 @@ import { deleteCreator } from '../pages/utils.js';
 
 import './ContentCreator.css';
 
-function ContentCreator({ creators }) {
+function ContentCreator({ creators, onDelete }) {
   const navigate = useNavigate();
 
   const handleDelete = async (id) => {
     if (window.confirm("Are you sure you want to delete this content creator?")) {
-      const error = await deleteCreator(id);
-      if (!error) {
-        navigate("/");
-      }
+      onDelete(id); 
     }
   };
 
@@ -34,8 +31,10 @@ function ContentCreator({ creators }) {
         </div>
       ))}
       <div onClick={() => navigate("/add")} className="content-btn content-btn-add">
-        <span className="plus-btn">+ Add a Content Creator</span>
+        <span className="plus-btn">+</span>
+        <span className="add-text">Add</span>
       </div>
+
     </div>
   );
 }

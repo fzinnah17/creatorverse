@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 //fetch the data from the database then render it in the ContentCreator file
 import ContentCreator from "../components/ContentCreator";
 import { supabase } from '../client.js';
+import { deleteCreator } from '../pages/utils.js';
 
 
 function ShowCreators() {
@@ -13,9 +14,16 @@ function ShowCreators() {
             const { data, error } = await supabase.from('creators').select('*').order('id', { ascending: true });
             if (data) {
                 setCreators(data);
+                console.log('Creators have changed!', creators);
             }
         })();
-    }, []);
+    }, [creators]);
+    const handleDelete = async (id) => {
+        const error = await deleteCreator(id);
+        if (!error) {
+          setCreators(prevCreators => prevCreators.filter(creator => creator.id !== id)); // This line updates the state and the UI
+        }
+      };
 
     return (
         <div>
@@ -25,7 +33,7 @@ function ShowCreators() {
                 <p>No content creators found in the database.</p>
             ) : (
                 // creators.map(creator => <ContentCreator key={creator.name} creator={creator} />)
-                <ContentCreator creators={creators} />
+                <ContentCreator creators={creators} onDelete={handleDelete} />
                 // Call aka Render the ContentCreator component and pass the 'creators' array as a prop so that the 
                 // creators from the ContentCreator.jsx file can show up on screen
             )}

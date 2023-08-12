@@ -11,7 +11,6 @@ function App() {
     return (
         <BrowserRouter>
             <div className="App">
-                <h1>React CRUD App with Hooks</h1>
                 <Routes>
                     <Route path="/" element={<ShowCreators />} />
                     <Route path="/add" element={<AddCreator />} />
