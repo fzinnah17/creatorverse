@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { supabase } from '../client.js';
 import { deleteCreator } from '../pages/utils.js';
 import { useParams, useNavigate } from 'react-router-dom';
+import './ViewCreator.css';
+
 
 function ViewCreator() {
     const { id } = useParams(); // Extract the Required key from the URL parameters
@@ -14,6 +16,14 @@ function ViewCreator() {
             navigate("/"); // Redirect to ContentCreator after deletion
         }
     };
+    const socialIcons = {
+        'dribbble': creator.url,
+        'instagram': '',
+        'twitter': '',
+        'linkedin': '',
+        'facebook': ''
+      };
+      
 
     // Fetch the creator's details from the database using an effect hook
     useEffect(() => {
@@ -29,17 +39,31 @@ function ViewCreator() {
     }, [id]); // Trigger the effect whenever the required 'id' name changes
 
     return (
-        <div>
-            <h1>Creator Details</h1>
-            <img src={creator.imageURL} alt={creator.name} />
-            <h2>{creator.name}</h2>
-            <a href={creator.url} target="_blank" rel="noopener noreferrer">{creator.url}</a>
-            <p>{creator.description}</p>
-            <button onClick={() => navigate(`/edit/${id}`)}>Edit</button>
-            <button onClick={handleDelete}>Delete</button>
+        <div className="view-creator-container box">
+          <div className="content">
+            <div className="image">
+              <img src={creator.imageURL} alt={creator.name} />
+            </div>
+            <div className="text">
+              <p className="name">{creator.name}</p>
+              <a href={creator.url} target="_blank" rel="noopener noreferrer" className="job_title">{creator.url}</a>
+              <p className="job_discription">{creator.description}</p>
+            </div>
+            <div className="icons">
+              {Object.keys(socialIcons).map(icon => (
+                <button key={icon}>
+                  <ion-icon name={`logo-${icon}`}></ion-icon>
+                </button>
+              ))}
+            </div>
+            <div className="button">
+              <button className="edit" onClick={() => navigate(`/edit/${id}`)}>Edit</button>
+              <button className="delete" onClick={handleDelete}>Delete</button>
+            </div>
+          </div>
         </div>
-
-    );
+      );
+      
 }
 
 export default ViewCreator;
