@@ -32,7 +32,6 @@
   width: 100%;
   max-width: 350px;
   height: 500px;
-  background-color: white;
   overflow: hidden;
   display: flex;
   flex-direction: column;

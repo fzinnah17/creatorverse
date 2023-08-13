@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Navbar from './components/Navbar';
 import AddCreator from './pages/AddCreator';
 import EditCreator from './pages/EditCreator';
 import ShowCreators from './pages/ShowCreators';
 import ViewCreator from './pages/ViewCreator';
-import { Navbar } from './components/Navbar.jsx';
 import './App.css';
 
 export const ThemeContext = React.createContext();
@@ -19,22 +19,23 @@ function App() {
 
     return (
         <BrowserRouter>
-        <ThemeContext.Provider value={{ theme, setTheme }}>
-            <div className="App">
-            <Navbar />
-                <Routes>
-                    <Route path="/" element={<ShowCreators />} />
-                    <Route path="/add" element={<AddCreator />} />
-                    <Route path="/edit/:id" element={<EditCreator />} />
-                    <Route path="/view/:id" element={<ViewCreator />} />
-                </Routes>
-            </div>
+            <ThemeContext.Provider value={{ theme, setTheme }}>
+                <div className="App">
+                    <Navbar />
+                    <Routes>
+                        <Route path="/" element={<ShowCreators />} />
+                        <Route path="/add" element={<AddCreator />} />
+                        <Route path="/edit/:id" element={<EditCreator />} />
+                        <Route path="/view/:id" element={<ViewCreator />} />
+                    </Routes>
+                </div>
             </ThemeContext.Provider>
         </BrowserRouter>
     );
 }
 
 export default App;
+
 
 
 

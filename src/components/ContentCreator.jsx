@@ -1,6 +1,5 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { deleteCreator } from '../pages/utils.js';
 
 import './ContentCreator.css';
 
