@@ -156,7 +156,6 @@ body[data-theme='light'] .add-form {
 
 .add-button.return {
   cursor: pointer;
-  font-family: "Nunito Sans", sans-serif;
   font-size: 0.8rem;
   color: white;
   text-decoration: underline;
@@ -208,20 +207,20 @@ body[data-theme='light'] .add-form {
 
 @keyframes waves {
   0% {
-      transform: scale(0.7); /* Adjusted initial scale */
-      opacity: 0.7; /* Adjusted opacity */
-      border-radius: 5px; /* Adjusted border radius */
+      transform: scale(0.7);
+      opacity: 0.7;
+      border-radius: 5px; 
   }
 
   50% {
-      opacity: 0.4; /* Adjusted opacity */
-      border-radius: 10px; /* Adjusted border radius */
+      opacity: 0.4; 
+      border-radius: 10px;
   }
 
   100% {
-      transform: scale(1.4); /* Adjusted larger scale */
-      opacity: 0; /* Faded out */
-      border-radius: 15px; /* Adjusted larger border radius */
+      transform: scale(1.4);
+      opacity: 0; 
+      border-radius: 15px;
   }
 }
 

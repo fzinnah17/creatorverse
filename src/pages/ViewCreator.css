@@ -82,16 +82,11 @@ body[data-theme='dark'] .view-creator-container.box {
     letter-spacing: 1px;
 }
 
-.view-creator-container .job_title {
-    font-size: 0.65em;
-    font-weight: bolder;
-    color: gray;
-    margin-top: -2px;
-}
-
 .view-creator-container .job_discription {
     font-size: 0.7em;
     margin: 10px 30px 20px;
+    max-height: calc(0.7em * 4);
+    overflow-y: auto;
 }
 
 .view-creator-container .icons {
