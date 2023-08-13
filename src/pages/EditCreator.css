@@ -122,6 +122,23 @@ body[data-theme='dark'] .editCreator_content {
   min-height: 100vh;
 }
 
+body[data-theme='dark'] .editCreator_content {
+  color: white;
+  --back_color: #221F2E;
+  --front_color: #2E2B3F;
+  --purple: #6240F6;
+  --pink: #EB7AC8;
+  --blue: #2DB8E7;
+  background: var(--back_color);
+}
+
+body[data-theme='light'] .editCreator_content {
+  color: black;
+  background: linear-gradient(135deg, #58a497, #2db8e7);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1), 0 0 40px rgba(0, 0, 0, 0.1);
+}
+
 .editCreator_profile,
 .editCreator_content {
   -webkit-transition: 0.5s ease;
@@ -145,10 +162,6 @@ body[data-theme='dark'] .editCreator_content {
   box-shadow: 0 2.5px 5px #ccc;
   margin: 20px auto;
 }
-
-
-body[data-theme='light'] .editCreator_content,
-body[data-theme='dark'] .editCreator_content { color: black; }
 
 .editCreator_content h1 {
   text-align: center;

@@ -85,11 +85,13 @@
 
 .content-card:hover .content-cover1,
 .content-card:hover .content-cover2 {
+  text-align: center;
   transform: translateX(0);
   z-index: 2;
 }
 
 .content-card:hover .content-cover3 {
+  text-align: center;
   transform: rotateY(0deg);
   z-index: 2;
 }

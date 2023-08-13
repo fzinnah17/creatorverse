@@ -174,7 +174,8 @@ function EditCreator() {
                                 ></span>
                                 <input type="text" placeholder="Image URL"
                                     value={formData.imageURL}
-                                    onChange={e => setFormData({ ...formData, imageURL: e.target.value })}
+                                    onChange={e => setFormData({ ...formData, imageURL: e.target.value 
+                                    })}
                                     required />
                             </div>
                         </fieldset>
@@ -194,6 +195,7 @@ function EditCreator() {
                                         <textarea
                                             value={formData[field.key]}
                                             onChange={e => setFormData({ ...formData, [field.key]: e.target.value })}
+                                            style={{ resize: "none" }}
                                         />
                                     ) : (
                                         <input type={field.type}
