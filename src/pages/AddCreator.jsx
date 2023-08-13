@@ -35,7 +35,11 @@ function AddCreator() {
         { key: 'name', label: 'Name', type: 'text', elementType: 'input' },
         { key: 'url', label: 'URL', type: 'url', elementType: 'input' },
         { key: 'description', label: 'Description', type: 'text', elementType: 'textarea' },
-        { key: 'imageURL', label: 'Image URL', type: 'url', elementType: 'input' }
+        { key: 'imageURL', label: 'Image URL', type: 'url', elementType: 'input' },
+        { key: 'instagram', label: 'Instagram URL', type: 'url', elementType: 'input' },
+        { key: 'twitter', label: 'Twitter URL', type: 'url', elementType: 'input' },
+        { key: 'linkedin', label: 'LinkedIn URL', type: 'url', elementType: 'input' },
+        { key: 'facebook', label: 'Facebook URL', type: 'url', elementType: 'input' }
     ];
 
     return (
@@ -72,11 +76,8 @@ function AddCreator() {
                 ))}
                 <div id="button"> {/* Introduced this div for the ripple effect */}
                     <button type="submit" className="add-button ripple">Add Creator</button>
-                    <span className="rip1 "></span> {/* New Ripple Effect */}
-                    <span className="rip2 "></span> {/* New Ripple Effect */}
-                </div>
-                <div onClick={() => navigate("/")} className="add-button return ripple neon-green">
-                    Return back to the first page
+                    <span className="rip1 "></span>
+                    <span className="rip2 "></span>
                 </div>
             </form>
         </div>

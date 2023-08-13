@@ -102,8 +102,21 @@ function EditCreator() {
         name: '',
         url: '',
         description: '',
-        imageURL: ''
+        imageURL: '',
+        instagram: '',
+        twitter: '',
+        linkedin: '',
+        facebook: ''
     });
+
+    const socialMediaFields = [
+        { key: 'instagram', label: 'Instagram URL' },
+        { key: 'twitter', label: 'Twitter URL' },
+        { key: 'linkedin', label: 'LinkedIn URL' },
+        { key: 'facebook', label: 'Facebook URL' }
+    ];
+
+
 
     const navigate = useNavigate();
 
@@ -130,6 +143,7 @@ function EditCreator() {
                 <div className="editCreator_content">
                     <h1>Edit Creator</h1>
                     <form onSubmit={handleSubmit}>
+                        {/* Photo Field */}
                         <fieldset>
                             <div className="editCreator_grid-35">
                                 <label>Your Photo</label>
@@ -142,39 +156,49 @@ function EditCreator() {
                                     required />
                             </div>
                         </fieldset>
-                        <fieldset>
-                            <div className="editCreator_grid-35">
-                                <label>Name</label>
-                            </div>
-                            <div className="editCreator_grid-65">
-                                <input type="text"
-                                    value={formData.name}
-                                    onChange={e => setFormData({ ...formData, name: e.target.value })}
-                                    required />
-                            </div>
-                        </fieldset>
-                        <fieldset>
-                            <div className="editCreator_grid-35">
-                                <label>URL</label>
-                            </div>
-                            <div className="editCreator_grid-65">
-                                <input type="url"
-                                    value={formData.url}
-                                    onChange={e => setFormData({ ...formData, url: e.target.value })}
-                                    required />
-                            </div>
-                        </fieldset>
-                        <fieldset>
-                            <div className="editCreator_grid-35">
-                                <label>Description</label>
-                            </div>
-                            <div className="editCreator_grid-65">
-                                <textarea
-                                    value={formData.description}
-                                    onChange={e => setFormData({ ...formData, description: e.target.value })}
-                                    required></textarea>
-                            </div>
-                        </fieldset>
+
+                        {/* Name, URL, and Description Fields */}
+                        {[
+                            { key: 'name', label: 'Name', type: 'text' },
+                            { key: 'url', label: 'URL', type: 'url' },
+                            { key: 'description', label: 'Description', type: 'textarea' }
+                        ].map(field => (
+                            <fieldset key={field.key}>
+                                <div className="editCreator_grid-35">
+                                    <label>{field.label}</label>
+                                </div>
+                                <div className="editCreator_grid-65">
+                                    {field.type === 'textarea' ? (
+                                        <textarea
+                                            value={formData[field.key]}
+                                            onChange={e => setFormData({ ...formData, [field.key]: e.target.value })}
+                                            required />
+                                    ) : (
+                                        <input type={field.type}
+                                            value={formData[field.key]}
+                                            onChange={e => setFormData({ ...formData, [field.key]: e.target.value })}
+                                            required />
+                                    )}
+                                </div>
+                            </fieldset>
+                        ))}
+
+                        {/* Social Media Fields */}
+                        {socialMediaFields.map(field => (
+                            <fieldset key={field.key}>
+                                <div className="editCreator_grid-35">
+                                    <label>{field.label}</label>
+                                </div>
+                                <div className="editCreator_grid-65">
+                                    <input type="url"
+                                        value={formData[field.key]}
+                                        onChange={e => setFormData({ ...formData, [field.key]: e.target.value })}
+                                    />
+                                </div>
+                            </fieldset>
+                        ))}
+
+                        {/* Buttons */}
                         <fieldset>
                             <input type="button" className="editCreator_Btn editCreator_cancel" value="Cancel" />
                             <input type="submit" className="editCreator_Btn" value="Update Creator" />
@@ -184,6 +208,7 @@ function EditCreator() {
             </div>
         </div>
     );
+
 }
 
 export default EditCreator;

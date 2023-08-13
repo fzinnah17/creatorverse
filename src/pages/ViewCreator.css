@@ -1,10 +1,6 @@
 .view-creator-container {
     margin: 0;
     padding: 0;
-    font-family: "Tinos", sans-serif;
-}
-
-.view-creator-container {
     --green: #58a497;
     --yellow: #e09449;
     --lightgreen1: #a4bdb7;
@@ -14,23 +10,48 @@
     --box: #ededed;
 }
 
-.view-creator-container.box {
+body[data-theme='light'] .view-creator-container {
+    color: black;
+}
 
-    width: 350px;
-    height: fit-content;
+
+body[data-theme='dark'] .view-creator-container {
+    color: black;
+    --back_color: #221F2E;
+    --front_color: #2E2B3F;
+    --purple: #6240F6;
+    --pink: #EB7AC8;
+    --blue: #2DB8E7;
+    background: var(--back_color);
+}
+
+.view-creator-container.box {
+    width: 400px;
+    min-height: fit-content;
     border-radius: 20px;
     padding: 10px;
     text-align: center;
     background: #ededed;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+body[data-theme='light'] .view-creator-container.box {
+    background: linear-gradient(135deg, #58a497, #2db8e7);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1), 0 0 40px rgba(0, 0, 0, 0.1);
 }
 
 .view-creator-container .content {
+    font-size: x-large;
     margin: 15px 2px;
 }
 
 .view-creator-container .image img {
     height: auto;
-    width: 120px;
+    width: 200px;
     border-radius: 50%;
     display: block;
     margin-left: auto;
@@ -70,23 +91,82 @@
 }
 
 .view-creator-container .icons {
-    margin: 0px 30px;
-    font-size: 1.5em;
-    display: flex;
-    justify-content: space-around;
+    margin: 20px 10px;
+    text-align: center;
 }
 
-.view-creator-container .icons button {
-    width: fit-content;
-    height: fit-content;
-    border: none;
-    font-size: 1em;
+.view-creator-container .icons a {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+    box-shadow: 0 2px 2px #999;
+    padding: 0px;
+    text-decoration: none;
+    text-align: center;
+    color: #fff;
+    font-size: 25px;
+    font-weight: normal;
+    line-height: 2em;
+    border-radius: 25px;
+    margin: 5px;
 }
 
-.view-creator-container ion-icon:hover {
-    color: #58a497;
-    transition: 0.5s;
+.view-creator-container .icons img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 35px;
+    height: 30px;
 }
+
+.view-creator-container .icons a.website {
+    background: #4060A5;
+}
+
+.view-creator-container .icons a.website:hover {
+    color: #4060A5;
+    background: #fff;
+}
+
+.view-creator-container .icons a.instagram {
+    background: #00ABE3;
+}
+
+.view-creator-container .icons a.instagram:hover {
+    color: #00ABE3;
+    background: #fff;
+}
+
+.view-creator-container .icons a.twitter {
+    background: #0094BC;
+}
+
+.view-creator-container .icons a.twitter:hover {
+    color: #0094BC;
+    background: #fff;
+}
+
+.view-creator-container .icons a.linkedin {
+    background: #cb2027;
+}
+
+.view-creator-container .icons a.linkedin:hover {
+    color: #cb2027;
+    background: #fff;
+}
+
+.view-creator-container .icons a.facebook {
+    background: #3a5876;
+}
+
+.view-creator-container .icons a.facebook:hover {
+    color: #3a5876;
+    background: #fff;
+}
+
 
 .view-creator-container button {
     width: 130px;

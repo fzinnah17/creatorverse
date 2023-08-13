@@ -9,6 +9,14 @@
   gap: 50px;
 }
 
+.content-container h1,
+.content-container h2,
+.content-container a {
+  margin: 0;
+  color: #FFFFFF;
+}
+
+
 .content-card {
   width: 25%;
   max-width: 350px;
@@ -61,7 +69,6 @@
   width: 100%;
   max-width: 350px;
   height: 500px;
-  background-color: white;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -158,18 +165,13 @@
   color: #d4aa00;
 }
 
-/* Additional Styling */
-h1,
-h2 {
-  margin: 0;
-}
-
 .add-text {
   display: none;
 }
 
 .content-btn-add:hover .plus-btn {
-  opacity: 0;  /* Hide it with opacity so the layout doesn't shift. */
+  opacity: 0;
+  /* Hide it with opacity so the layout doesn't shift. */
 }
 
 .content-btn-add:hover .add-text {
