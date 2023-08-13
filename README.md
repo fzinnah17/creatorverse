@@ -50,7 +50,7 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of implemented required features:
 
-👉🏿<img src='https://imgur.com/3lSkjci' title='Video Walkthrough for Web Dev 103 Pre Work Farnaz Zinnah' width='' alt='Video Walkthrough for Web Dev 103 Pre Work Farnaz Zinnah' />
+👉🏿<img src='[https://imgur.com/3lSkjci](https://imgur.com/3lSkjci)' title='Video Walkthrough for Web Dev 103 Pre Work Farnaz Zinnah' width='' alt='Video Walkthrough for Web Dev 103 Pre Work Farnaz Zinnah' />
 
 GIF created with ...  LiceCap
 
