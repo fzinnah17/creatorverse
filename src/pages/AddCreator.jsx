@@ -32,14 +32,14 @@ function AddCreator() {
     // An array of form fields and their configurations in order to use mapping to render the form fields. 
     // The formFields array provides a structured representation of the form inputs.
     const formFields = [
-        { key: 'name', label: 'Name', type: 'text', elementType: 'input' },
-        { key: 'url', label: 'URL', type: 'url', elementType: 'input' },
-        { key: 'description', label: 'Description', type: 'text', elementType: 'textarea' },
-        { key: 'imageURL', label: 'Image URL', type: 'url', elementType: 'input' },
-        { key: 'instagram', label: 'Instagram URL', type: 'url', elementType: 'input' },
-        { key: 'twitter', label: 'Twitter URL', type: 'url', elementType: 'input' },
-        { key: 'linkedin', label: 'LinkedIn URL', type: 'url', elementType: 'input' },
-        { key: 'facebook', label: 'Facebook URL', type: 'url', elementType: 'input' }
+        { key: 'name', label: 'Name', type: 'text', elementType: 'input', required: true },
+        { key: 'url', label: 'URL', type: 'url', elementType: 'input', required: true},
+        { key: 'description', label: 'Description', type: 'text', elementType: 'textarea', required: true },
+        { key: 'imageURL', label: 'Image URL', type: 'url', elementType: 'input', required: true },
+        { key: 'instagram', label: 'Instagram URL', type: 'url', elementType: 'input', required: false },
+        { key: 'twitter', label: 'Twitter URL', type: 'url', elementType: 'input', required: false },
+        { key: 'linkedin', label: 'LinkedIn URL', type: 'url', elementType: 'input', required: false },
+        { key: 'facebook', label: 'Facebook URL', type: 'url', elementType: 'input', required: false }
     ];
 
     return (
@@ -59,7 +59,7 @@ function AddCreator() {
                                 placeholder={field.label}
                                 value={formData[field.key]} // ...force the input's value to match the state variable...
                                 onChange={e => setFormData({ ...formData, [field.key]: e.target.value })} //... and update the state variable on any edits!
-                                required
+                                required={field.required}
                                 className="add-input neon-white"
                             />
                         ) : (
@@ -68,7 +68,7 @@ function AddCreator() {
                                 placeholder={field.label}
                                 value={formData[field.key]} // ...react.dev/reference/react-dom/components/textarea
                                 onChange={e => setFormData({ ...formData, [field.key]: e.target.value })} // ... and update the state variable on any edits!
-                                required
+                                required={field.required}
                                 className="add-textarea neon-white"
                             ></textarea>
                         )}
