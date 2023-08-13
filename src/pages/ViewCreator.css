@@ -39,9 +39,14 @@ body[data-theme='dark'] .view-creator-container {
   }
 
 body[data-theme='light'] .view-creator-container.box {
+    color: black;
     background: linear-gradient(135deg, #58a497, #2db8e7);
     border: 1px solid rgba(255, 255, 255, 0.1);
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1), 0 0 40px rgba(0, 0, 0, 0.1);
+}
+
+body[data-theme='dark'] .view-creator-container.box {
+    color: white;
 }
 
 .view-creator-container .content {
@@ -86,7 +91,6 @@ body[data-theme='light'] .view-creator-container.box {
 
 .view-creator-container .job_discription {
     font-size: 0.7em;
-    color: gray;
     margin: 10px 30px 20px;
 }
 

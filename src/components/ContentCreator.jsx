@@ -18,7 +18,7 @@ function ContentCreator({ creators, onDelete }) {
           <img className="contentcard-image" src={creator.imageURL} alt={creator.name} />
           <div className={`content-cover content-cover${(index % 3) + 1}`}>
             <h1 style={{ margin: "0.25em" }}>{creator.name}</h1>
-            <h2 style={{ margin: "0.1em", marginBottom: "1.5em" }}>{creator.description}</h2>
+            <h2 className="description-text" style={{ margin: "0.1em", marginBottom: "1.5em" }}>{creator.description}</h2>
             <a href={creator.url} target="_blank" rel="noopener noreferrer">
               {creator.url}
             </a>

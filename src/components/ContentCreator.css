@@ -1,5 +1,4 @@
 .content-container {
-  font-family: "Tinos", sans-serif;
   margin-top: 2em;
   margin-bottom: 2em;
   display: flex;
@@ -94,6 +93,15 @@
   text-align: center;
   transform: rotateY(0deg);
   z-index: 2;
+}
+
+.description-text {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-height: calc(4 * 1.5em)
 }
 
 /* Hover Effect */

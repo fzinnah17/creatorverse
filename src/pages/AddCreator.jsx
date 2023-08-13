@@ -17,8 +17,8 @@ function AddCreator() {
     });
     // The useNavigate hook returns a function that lets you navigate programmatically - React v6
     const navigate = useNavigate();
-
     const handleSubmit = async (e) => {
+        console.log("Updating with formData:", formData);
         e.preventDefault();
         // Once the form is ready to be submitted, the formData state contains all the information the user entered. 
         // This makes it straightforward to send this data to Supabase, or any other back-end/database.
