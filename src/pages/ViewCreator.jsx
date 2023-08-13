@@ -15,6 +15,9 @@ function ViewCreator() {
   const { id } = useParams(); // Extract the Required key from the URL parameters
   const navigate = useNavigate();
   const [creator, setCreator] = useState({}); // Initialize state to store the creator's details
+  // Define the state variable 'creator' with its setter function 'setCreator'. Initialized as an empty object.
+
+
   // function to handle the delete button click
   const handleDelete = async () => {
     if (window.confirm("Are you sure you want to delete this content creator?")) {
@@ -22,6 +25,8 @@ function ViewCreator() {
       navigate("/"); // Redirect to ContentCreator after deletion
     }
   };
+
+  // Map of social media icons to their respective URLs.
   const socialIcons = {
     'website': { url: creator.url, icon: wwwIcon },
     'instagram': { url: creator.instagram, icon: instagramIcon },
@@ -39,6 +44,7 @@ function ViewCreator() {
       const { data, error } = await supabase.from('creators').select('*').eq('id', id);
       if (data && data.length > 0) {
         // Update the state with the first item (since we're querying by Required ID name)
+        // If data exists and is non-empty, update the 'creator' state with the first object (since 'id' is unique).
         setCreator(data[0]);
       }
     })();

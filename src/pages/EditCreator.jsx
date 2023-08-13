@@ -5,8 +5,8 @@ import "./EditCreator.css"
 
 
 function EditCreator() {
-    const { id } = useParams();
-    const [formData, setFormData] = useState({
+    const { id } = useParams(); // Using the useParams hook to get the 'id' from the URL, this is typically the id of the creator to edit.
+    const [formData, setFormData] = useState({ // Initializing the state for the form data.
         name: '',
         url: '',
         description: '',
@@ -15,40 +15,44 @@ function EditCreator() {
         twitter: '',
         linkedin: '',
         facebook: ''
-    });
+    }); // All the fields in your form, initialized to empty strings.
 
+    // static array, which represents the social media fields in the edit form. 
     const socialMediaFields = [
         { key: 'instagram', label: 'Instagram URL' },
         { key: 'twitter', label: 'Twitter URL' },
         { key: 'linkedin', label: 'LinkedIn URL' },
         { key: 'facebook', label: 'Facebook URL' }
-    ];
+    ]; // Each object has a 'key' representing its name and a 'label' for display purposes.
 
 
 
     const navigate = useNavigate();
-    useEffect(() => {
+    useEffect(() => { // This is an immediately invoked asynchronous function to use async/await inside the useEffect hook.
         (async () => {
+            // Fetching the creator data from Supabase based on the ID.
             const { data, error } = await supabase.from('creators').select('*').eq('id', id);
+            // If data is fetched and it's not empty.
             if (data && data.length > 0) {
-                console.log(data[0]);
                 // Ensure that fields that might be null or undefined are set to an empty string
                 const updatedData = Object.keys(formData).reduce((acc, key) => {
                     acc[key] = data[0][key] || '';  // Here's the crucial part. If data[0][key] is null or undefined, use empty string
                     return acc;
                 }, {});
-
+                // Updating the formData state with the fetched data.
                 setFormData(updatedData);
             }
         })();
-    }, [id]);
+    }, [id]); // This effect will rerun whenever 'id' changes.
 
 
+    // Handler function for form submission.
     const handleSubmit = async (e) => {
-        e.preventDefault();
+        e.preventDefault(); // Prevent default form submission behavior.
+        // Update the creator data in Supabase using the form data.
         const { data, error } = await supabase.from('creators').update(formData).eq('id', id);
         if (!(error)) {
-            navigate('/');
+            navigate('/'); // If the update is successful, navigate back to the main page.
         }
     }
 
@@ -68,7 +72,8 @@ function EditCreator() {
                                 ></span>
                                 <input type="text" placeholder="Image URL"
                                     value={formData.imageURL}
-                                    onChange={e => setFormData({ ...formData, imageURL: e.target.value 
+                                    onChange={e => setFormData({
+                                        ...formData, imageURL: e.target.value
                                     })}
                                     required />
                             </div>
